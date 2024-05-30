@@ -13,7 +13,8 @@ export class StoreComponent {
   productsPerPage = signal(4);
   selectedPage = signal(1);
   pagedProducts: Signal<Product[]>;
-  pageNumbers: Signal<number[]>;
+  // pageNumbers: Signal<number[]>;
+  pageCount: Signal<number>;
 
   constructor(private repository: ProductRepository) {
     this.products = computed(() => {
@@ -32,9 +33,12 @@ export class StoreComponent {
     this.pagedProducts = computed(() => {
       return this.products().slice(pageIndex(), pageIndex() + this.productsPerPage());
     });
-    this.pageNumbers = computed(() => {
-      return Array(Math.ceil(this.products().length / this.productsPerPage()))
-        .fill(0).map((x, i) => i + 1);
+    // this.pageNumbers = computed(() => {
+    //   return Array(Math.ceil(this.products().length / this.productsPerPage()))
+    //     .fill(0).map((x, i) => i + 1);
+    // });
+    this.pageCount = computed(() => {
+      return Math.ceil(this.products().length / this.productsPerPage());
     });
   }
 
