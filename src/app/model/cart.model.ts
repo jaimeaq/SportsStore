@@ -97,6 +97,17 @@ export class Cart {
     });
   }
 
+  updateQuantity(product: Product, quantity: number) {
+    this.linesSignal.update(linesArray => {
+      let updatedLines = [...linesArray]; // Clone the array to avoid mutating the original
+      let line = updatedLines.find(l => l.product.id == product.id);
+      if (line != undefined) {
+        line.quantity = Number(quantity);
+      }
+      return updatedLines;
+    });
+  }
+
   removeLine(id: number) {
     this.linesSignal.update(linesArray => {
       let updatedLines = linesArray.filter(l => l.product.id !== id);
