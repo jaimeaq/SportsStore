@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
-import {StaticDataSource} from "./static.datasource";
 import {Observable} from "rxjs";
 import {Order} from "./order.model";
+import {RestDataSource} from "./rest.datasource";
 
 @Injectable()
-export class OrderRespository {
-  constructor(private dataSource: StaticDataSource) {
+export class OrderRepository {
+
+  constructor(private dataSource: RestDataSource) {
   }
 
   saveOrder(order: Order): Observable<Order> {

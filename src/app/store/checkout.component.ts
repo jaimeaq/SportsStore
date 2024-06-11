@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {OrderRespository} from "../model/order.respository";
+import {OrderRepository} from "../model/order.repository";
 import {Order} from "../model/order.model";
 import {NgForm} from "@angular/forms";
 
@@ -11,7 +11,7 @@ export class CheckoutComponent {
   orderSent: boolean = false;
   submitted: boolean = false;
 
-  constructor(public repository: OrderRespository,
+  constructor(public repository: OrderRepository,
               public order: Order) {}
 
   submitOrder(form: NgForm) {
